@@ -141,7 +141,7 @@ module CheckGluster
       raise data['status'].to_s + ' : ' + data['stdout'] unless data['status'].success?
       return data['stdout'] unless xml
       data = Crack::XML.parse(data['stdout'])
-      if data['cliOutput']['opRet'].to_i != 0 || data['cliOutput']['opErrno'].to_i != 0
+      if data['cliOutput']['opRet'].to_i != 0 
         raise "Error on #{command} : #{data['cliOutput']['opErrstr']}"
       end
       data['cliOutput']
